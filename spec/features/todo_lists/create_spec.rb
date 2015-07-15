@@ -9,8 +9,8 @@ describe 'Creating todo lists' do
         click_link 'New Todo list'
         expect(page).to have_content("New Todo List")
 
-        fill_in "Title", with: options[:title]
-        fill_in "Description", with: options[:description]
+        fill_in "Title", with: args[:title]
+        fill_in "Description", with: args[:description]
         click_button "Create Todo list"
     end
 
@@ -39,13 +39,7 @@ describe 'Creating todo lists' do
         # we expect that the database is cleared after each test
         expect(TodoList.count).to eq(0)
 
-        visit '/todo_lists'
-        click_link 'New Todo list'
-        expect(page).to have_content("New Todo List")
-
-        fill_in "Title", with: "Hi"
-        fill_in "Description", with: "This is what I'm doing today."
-        click_button "Create Todo list"
+        create_todo_list title: "Ti" # sending the title as an argument without enough characters
 
         # expect that we still don't have any todo lists in our db
         expect(TodoList.count).to eq(0)
@@ -60,12 +54,7 @@ describe 'Creating todo lists' do
         # we expect that the database is cleared after each test
         expect(TodoList.count).to eq(0)
 
-        visit '/todo_lists'
-        click_link 'New Todo list'
-        expect(page).to have_content("New Todo List")
-
-        fill_in "Title", with: "Groceries List" # notice that we purposely didn't add a title
-        fill_in "Description", with: ""
+        create_todo_list title: "Grocery list", description: "" # sending the description as an argument without any text
         click_button "Create Todo list"
 
         # expect that we still don't have any todo lists in our db
@@ -81,13 +70,7 @@ describe 'Creating todo lists' do
         # we expect that the database is cleared after each test
         expect(TodoList.count).to eq(0)
 
-        visit '/todo_lists'
-        click_link 'New Todo list'
-        expect(page).to have_content("New Todo List")
-
-        fill_in "Title", with: "Groceries List"
-        fill_in "Description", with: "Food"
-        click_button "Create Todo list"
+        create_todo_list title: "Grocery list", description: "Food" # sending the description as an argument without enough characters
 
         # expect that we still don't have any todo lists in our db
         expect(TodoList.count).to eq(0)
