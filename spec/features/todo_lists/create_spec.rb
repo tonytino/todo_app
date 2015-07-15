@@ -1,14 +1,21 @@
 require 'spec_helper'
 
 describe 'Creating todo lists' do
-    it 'redirects to the todo list index page on success' do
+    def create_todo_list(args={})
+        args[:title] ||= "My todo list"
+        args[:description] ||= "This is my todo list."
+
         visit '/todo_lists'
         click_link 'New Todo list'
         expect(page).to have_content("New Todo List")
 
-        fill_in "Title", with: "My todo list"
-        fill_in "Description", with: "This is what I'm doing today."
+        fill_in "Title", with: options[:title]
+        fill_in "Description", with: options[:description]
         click_button "Create Todo list"
+    end
+
+    it 'redirects to the todo list index page on success' do
+        create_todo_list
 
         expect(page).to have_content("My todo list")
     end
@@ -17,13 +24,7 @@ describe 'Creating todo lists' do
         # we expect that the database is cleared after each test
         expect(TodoList.count).to eq(0)
 
-        visit '/todo_lists'
-        click_link 'New Todo list'
-        expect(page).to have_content("New Todo List")
-
-        fill_in "Title", with: "" # notice that we purposely didn't add a title
-        fill_in "Description", with: "This is what I'm doing today."
-        click_button "Create Todo list"
+        create_todo_list title: "" # sending the title as an argument without any text
 
         # expect that we still don't have any todo lists in our db
         expect(TodoList.count).to eq(0)
