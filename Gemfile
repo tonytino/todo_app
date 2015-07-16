@@ -25,4 +25,5 @@ end
 # personally added Capybara below for test environment
 group :test do
     gem 'capybara', '~> 2.1.0' # we want a version greater than 2.1.0
+    gem 'shoulda-matchers', '~> 2.8.0' # we want a version greater than 2.8.0 to ensure compatibility
 end
