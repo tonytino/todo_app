@@ -1,5 +1,5 @@
 # Basic To Do Application with RSpec Tests
 
-- This application is tested using RSpec
+*Currently under initial development*
 
-- Used scaffolding for purpose of quickly getting application up (specifically to do functionality)
+- This application functions as a simple to do list Rails app that is to be tested using RSpec
