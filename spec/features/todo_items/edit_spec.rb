@@ -16,7 +16,7 @@ describe 'Adding todo items' do
   it 'is successful with valid content' do
     visit_todo_list(todo_list)
 
-    within("#todo_items_#{todo_item.id}") do
+    within("#todo_item_#{todo_item.id}") do
       click_link 'Edit'
     end
     fill_in 'Content', with: 'Lots of Milk'
