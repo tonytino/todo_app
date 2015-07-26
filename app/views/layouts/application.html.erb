@@ -8,11 +8,13 @@
 </head>
 <body>
 
+<% if !flash.empty? %>
   <%= flash.each do |type, message| %>
   <div class="alert flash <%= type %>">
     <%= message %>
   </div>
   <% end %>
+<% end %>
 
 <%= yield %>
 
