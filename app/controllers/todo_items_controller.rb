@@ -22,7 +22,21 @@ class TodoItemsController < ApplicationController
   end
 
   def edit
+    @todo_list = TodoList.find(params[:todo_list_id])
+    @todo_item = @todo_list.todo_items.find(params[:id])
+  end
 
+  def update
+    @todo_list = TodoList.find(params[:todo_list_id])
+    @todo_item = @todo_list.todo_items.find(params[:id])
+
+    if @todo_item.update_attributes(todo_item_params)
+      flash[:success] = 'Updated todo list item.'
+      redirect_to todo_list_todo_items_path(@todo_list)
+    else
+      flash[:error] = 'There was a problem updating that todo list item.'
+      render action: :edit
+    end
   end
 
   # url_options method

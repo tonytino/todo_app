@@ -20,7 +20,7 @@ describe 'Adding todo items' do
       click_link 'Edit'
     end
     fill_in 'Content', with: 'Lots of Milk'
-    click_button 'Save'
+    click_button 'Update'
 
     expect(page).to have_content('Updated todo list item.')
 
