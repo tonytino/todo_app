@@ -21,6 +21,8 @@ RSpec.configure do |config|
 
   # includes the TodoListHelpers module for any specs inside of the feature directory
   config.include TodoListHelpers, type: :feature
+  # includes the RailsDomIdHelper module for any specs inside of the feature directory
+  config.include RailsDomIdHelper, type: :feature
 
   # ## Mock Framework
   #
