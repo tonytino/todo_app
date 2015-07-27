@@ -23,5 +23,4 @@ describe 'Deleting todo items' do
     expect(page).to have_content('Todo list item was deleted.')
     expect(TodoItem.count).to eq(0)
   end
-
 end
