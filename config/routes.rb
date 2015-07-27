@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
 
   resources :todo_lists do
-      resources :todo_items # nested
+      resources :todo_items do
+        member do # the member helper is for adding random additional routes aside from the typical RESTful routes like index, new, create, edit, etc.
+          patch :complete # we use patch because we're updating a single attribute (rather than a todo_item in entirety) of a todo_item (we're marking it complete).
+          # corresponding route => complete_todo_list_todo_item_path(todo_item), method: :patch
+        end
+      end
   end
 
   root 'todo_lists#index'
