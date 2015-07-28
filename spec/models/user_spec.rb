@@ -5,7 +5,9 @@ describe User do
     {
       first_name: 'Anthony',
       last_name: 'Hernandez',
-      email: "anthony@mail.com"
+      email: "anthony@mail.com",
+      password: 'monkey123',
+      password_confirmation: 'monkey123'
     }
   }
 
