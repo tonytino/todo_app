@@ -15,7 +15,7 @@ describe 'Adding todo items' do
       expect(page).to have_content('Added todo list item.')
     end
 
-    within('ul.todo_items') do
+    within('table.todo_items') do
       expect(page).to have_content('Milk')
     end
   end

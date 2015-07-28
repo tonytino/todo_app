@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :users
+
   resources :todo_lists do
       resources :todo_items do
         member do # the member helper is for adding random additional routes aside from the typical RESTful routes like index, new, create, edit, etc.

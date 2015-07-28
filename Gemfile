@@ -2,6 +2,10 @@ source 'https://rubygems.org'
 
 # the following gems are already included when a new rails app is created (removed the initial comments)
 gem 'rails', '4.2.3'
+
+# personally added BCrypt below
+gem 'bcrypt', '~> 3.1.7'
+
 gem 'sqlite3'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
