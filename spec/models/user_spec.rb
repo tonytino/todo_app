@@ -32,6 +32,11 @@ describe User do
       user.email = 'ANTHONY@MAIL.COM'
       expect(user).to validate_uniqueness_of(:email)
     end
+
+    it 'requires an email address to look like an email address' do
+      user.email = 'anthony'
+      expect(user).to_not be_valid
+    end
   end
 
   context '#downcase_email' do
