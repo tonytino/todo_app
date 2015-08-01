@@ -7,13 +7,15 @@ describe UserSessionsController do
       get 'new'
       response.should be_success
     end
+
+    it "renders the new template" do
+      get 'new'
+      expect(response).to render_template('new')
+    end
   end
 
-  describe "GET 'create'" do
-    it "returns http success" do
-      get 'create'
-      response.should be_success
-    end
+  describe "POST 'create'" do
+
   end
 
 end
