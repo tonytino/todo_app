@@ -48,8 +48,13 @@ describe UserSessionsController do
 
     context 'with blank credentials' do
       it 'renders the new template' do
-        post :create
+        post :create, email: '', password: ''
         expect(response).to render_template('new')
+      end
+
+      it 'sets the flash error message' do
+        post :create
+        expect(flash[:error]).to eq('There was a problem logging in. Please check your email and password.')
       end
     end
   end
