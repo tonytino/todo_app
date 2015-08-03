@@ -39,6 +39,18 @@ describe UserSessionsController do
         post :create, email: 'anthony@mail.com', password: 'monkey123'
         expect(session[:user_id]).to eq(user.id)
       end
+
+      it 'sets the flash success message' do
+        post :create, email: 'anthony@mail.com', password: 'monkey123'
+        expect(flash[:success]).to eq('Thanks for logging in!')
+      end
+    end
+
+    context 'with blank credentials' do
+      it 'renders the new template' do
+        post :create
+        expect(response).to render_template('new')
+      end
     end
   end
 
