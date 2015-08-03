@@ -57,6 +57,20 @@ describe UserSessionsController do
         expect(flash[:error]).to eq('There was a problem logging in. Please check your email and password.')
       end
     end
+
+    context 'with an incorrect password' do
+      let!(:user) { User.create(first_name: 'Anthony', last_name: 'Hernandez', email: 'anthony@mail.com', password: 'monkey123', password_confirmation: 'monkey123') }
+
+      it 'renders the new template' do
+        post :create, email: user.email, password: 'incorrect'
+        expect(response).to render_template('new')
+      end
+
+      it 'sets the flash error message' do
+        post :create, email: user.email, password: 'incorrect'
+        expect(flash[:error]).to eq('There was a problem logging in. Please check your email and password.')
+      end
+    end
   end
 
 end
