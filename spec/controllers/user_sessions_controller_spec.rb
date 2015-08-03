@@ -70,6 +70,12 @@ describe UserSessionsController do
       let(:password) { 'incorrect' }
       it_behaves_like 'denied login'
     end
+
+    context 'with no email in existence' do
+      let(:email) { 'fake@email.com' }
+      let(:password) { 'incorrect' }
+      it_behaves_like 'denied login'
+    end
   end
 
 end
